@@ -8,6 +8,10 @@ import utilStyles from '../styles/utils.module.css'
 const name = 'ChihYu Yeh'
 export const siteTitle = 'Next.js Sample Blog'
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
@@ -31,6 +35,7 @@ export default function Layout({ children, home }) {
           <>
             <Image
               priority
+              loader={imageLoader}
               src='/images/profile.jpg'
               className={utilStyles.borderCycle}
               height={144}
@@ -43,8 +48,9 @@ export default function Layout({ children, home }) {
           <>
             <Link href='/'>
               <a>
-                <Image 
+                <Image
                   priority
+                  loader={imageLoader}
                   src='/images/profile.jpg'
                   className={utilStyles.borderCycle}
                   height={108}
